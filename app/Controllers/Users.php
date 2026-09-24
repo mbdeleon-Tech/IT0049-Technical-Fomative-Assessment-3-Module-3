@@ -25,7 +25,7 @@ class Users extends BaseController
     public function create()
     {
         if (! $this->validate(['username' => 'required|max_length[50]|is_unique[users.username]', 'full_name' => 'required|max_length[100]'])) {
-            return redirect()->back()->withInput()->with('errors', $this->validator->getErrors());
+            return redirect()->back()->withInput()->with('formInput', $this->request->getPost())->with('errors', $this->validator->getErrors());
         }
         (new UserModel())->insert([
             'username' => trim((string) $this->request->getPost('username')),
@@ -60,7 +60,7 @@ class Users extends BaseController
             $rules['avatar'] = 'uploaded[avatar]|max_size[avatar,2048]|is_image[avatar]|mime_in[avatar,image/jpg,image/jpeg,image/png]';
         }
         if (! $this->validate($rules)) {
-            return redirect()->back()->withInput()->with('errors', $this->validator->getErrors());
+            return redirect()->back()->withInput()->with('formInput', $this->request->getPost())->with('errors', $this->validator->getErrors());
         }
 
         $data = [

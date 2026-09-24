@@ -31,7 +31,7 @@ class Customers extends BaseController
     public function create()
     {
         if (! $this->validate($this->rules)) {
-            return redirect()->back()->withInput()->with('errors', $this->validator->getErrors());
+            return redirect()->back()->withInput()->with('formInput', $this->request->getPost())->with('errors', $this->validator->getErrors());
         }
 
         (new CustomerModel())->insert([
@@ -60,7 +60,7 @@ class Customers extends BaseController
             throw \CodeIgniter\Exceptions\PageNotFoundException::forPageNotFound('Customer not found.');
         }
         if (! $this->validate($this->rules)) {
-            return redirect()->back()->withInput()->with('errors', $this->validator->getErrors());
+            return redirect()->back()->withInput()->with('formInput', $this->request->getPost())->with('errors', $this->validator->getErrors());
         }
         $model->update($id, [
             'full_name' => trim((string) $this->request->getPost('full_name')),
