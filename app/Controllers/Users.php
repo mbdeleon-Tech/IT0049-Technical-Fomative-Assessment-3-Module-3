@@ -41,7 +41,7 @@ class Users extends BaseController
         if (! $user) {
             throw \CodeIgniter\Exceptions\PageNotFoundException::forPageNotFound('User not found.');
         }
-        return view('users/form', ['title' => 'Edit User', 'activePage' => 'users', 'user' => $user, 'errors' => session('errors') ?? []]);
+        return view('users/form', ['title' => 'Edit User', 'activePage' => 'users', 'user' => $user, 'usernameValue' => $user['username'], 'errors' => session('errors') ?? []]);
     }
 
     public function update(int $id)
