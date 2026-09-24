@@ -5,9 +5,9 @@
 <?php if ($errors): ?><div class="notice error"><ul><?php foreach ($errors as $error): ?><li><?= esc($error) ?></li><?php endforeach; ?></ul></div><?php endif; ?>
 <form method="post" action="<?= $customer ? site_url('customers/' . $customer['id']) : site_url('customers') ?>">
 <?= csrf_field() ?>
-<div class="field"><label for="full_name">Full name</label><input id="full_name" name="full_name" required maxlength="100" value="<?= esc(old('full_name', $customer['full_name'] ?? ''), 'attr') ?>"></div>
-<div class="field"><label for="email">Email address</label><input id="email" name="email" type="email" required maxlength="100" value="<?= esc(old('email', $customer['email'] ?? ''), 'attr') ?>"></div>
-<div class="field"><label for="phone">Phone number</label><input id="phone" name="phone" maxlength="20" value="<?= esc(old('phone', $customer['phone'] ?? ''), 'attr') ?>"></div>
+<div class="field"><label for="full_name">Full name</label><input id="full_name" name="full_name" required maxlength="100" value="<?= esc(old('full_name') !== '' ? old('full_name') : ($customer['full_name'] ?? ''), 'attr') ?>"></div>
+<div class="field"><label for="email">Email address</label><input id="email" name="email" type="email" required maxlength="100" value="<?= esc(old('email') !== '' ? old('email') : ($customer['email'] ?? ''), 'attr') ?>"></div>
+<div class="field"><label for="phone">Phone number</label><input id="phone" name="phone" maxlength="20" value="<?= esc(old('phone') !== '' ? old('phone') : ($customer['phone'] ?? ''), 'attr') ?>"></div>
 <div class="form-actions"><button class="button button-primary" type="submit"><?= $customer ? 'Save changes' : 'Create customer' ?></button><a class="button button-secondary" href="<?= site_url('customers') ?>">Cancel</a></div>
 </form></div></section>
 <?= $this->endSection() ?>

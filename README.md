@@ -4,7 +4,7 @@ Northstar POS is a CodeIgniter 4 application for IT0049 Technical Formative Asse
 
 ## Live website
 
-The TFA3 hosted link will be added after deployment.
+[Open the hosted TFA3 application](https://tfa3-deleon-tc33.infinityfree.me/)
 
 ## Pages
 
